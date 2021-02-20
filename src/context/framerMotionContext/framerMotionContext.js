@@ -3,6 +3,11 @@ import {createContext} from 'react';
 export const FramerMotionContext = createContext();
 
 const pageVariants = {
+    navInit:{
+        opacity: 0,
+        y: "-100vh",
+        scale: 0.2
+    },
     initial: {
         opacity: 0,
         x: '-100vw',
@@ -11,6 +16,7 @@ const pageVariants = {
     in: {
         opacity: 1,
         x: 0,
+        y: 0,
         scale: 1
     },
     out: {
