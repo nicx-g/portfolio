@@ -1,0 +1,71 @@
+.navBar{
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+
+    &__headerLeft{
+        margin: 2em;
+        
+        a{
+            color: map-get($map: $colors, $key: secondary);
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 0 1.5em;
+            text-decoration: none;
+        }
+    }
+    
+    &__headerRight{
+        margin: 2em;
+    
+        &__menu{
+        
+            ul{
+                align-items: center;
+                display:flex;
+                justify-content: flex-end;
+                margin: 0;
+                padding: 0;
+        
+                li{
+                    list-style: none;
+        
+                    a{
+                        color: map-get($map: $colors, $key: secondary);
+                        font-size: 1.4rem;
+                        font-weight: 600;
+                        margin: 0 1.5em;
+                        position: relative;
+                        text-decoration: none;
+
+                        &:before{
+                            background-color: map-get($map: $colors, $key: tertiary);
+                            border-radius: 10px;
+                            bottom: -4px;
+                            content: '';
+                            display: block;
+                            height: 3px;
+                            right: 0;
+                            position: absolute;
+                            transition: all .3s ease-in-out;
+                            width: 0;
+
+                        }
+
+                        &:hover::before{
+                            width: 100%;
+                            left: 0;
+                        }              
+
+                        &.active::before{
+                            width: 100%;
+                            left: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+

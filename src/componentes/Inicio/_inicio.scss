@@ -1,0 +1,87 @@
+.home{
+    align-items: center;
+    display: flex;
+    justify-content: space-evenly;
+    height: 100%;
+    padding: 2em;
+
+    &__vendor{
+        border-left: 10px solid map-get($map: $colors, $key: tertiary);
+        padding-left: 1em;
+
+        &-title, &-subtitle, &-link{
+            color: map-get($map: $colors, $key: secondary);
+            font-weight: bolder;
+            margin: 5px;
+        }
+
+        &-title{
+            font-size: 3rem;
+        }
+
+        &-subtitle{
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: 1em;
+        }
+
+        &-link{
+            background-color: map-get($map: $colors, $key: tertiary);
+            border-radius: 5px;
+            font-size: 1.5rem;
+            margin: 2em 0;
+            padding: .5em;
+            position: relative;
+            text-decoration: none;
+
+            &:before, &:after{
+                border: 3px solid transparent;
+                border-radius: 5px;
+                box-sizing: border-box;
+                content:'';
+                height: 0;
+                position: absolute;
+                width: 0;
+            }
+
+            &:before{
+                bottom: 0;
+                left: 0;
+            }
+
+            &:after{
+                right: 0;
+                top: 0;
+            }
+
+            &:hover:before, &:hover:after{
+                border: 3px solid map-get($map: $colors, $key: secondary);
+                height: 100%;
+                transition: height .2s linear, width .2s linear .2s;
+                width: 100%;
+            }
+
+            &:hover:before{
+                border-bottom: none;
+                border-right: none;
+            }
+
+            &:hover:after{
+                border-left: none;
+                border-top: none;
+            }
+        }
+    }
+
+    &__jugaConmigo{
+
+        &__vendor{
+
+            &-title{
+                color: map-get($map: $colors, $key: secondary);
+                font-size: 2rem;
+                font-weight: bolder;
+            }
+        }
+    }
+}

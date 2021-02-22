@@ -1,0 +1,6 @@
+.cuadrado{
+    background-color: map-get($map: $colors, $key: secondary);
+    height: 5em;
+    margin: 5px;
+    width: 5em;
+}

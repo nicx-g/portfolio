@@ -1,0 +1,11 @@
+.tablero{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &__fila{
+        display: flex;
+        
+    }
+}

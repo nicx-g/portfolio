@@ -1,0 +1,116 @@
+.proyectos{
+    display: flex;
+
+    &__filtro{
+        margin: 2em 1em 2em 3em;
+
+        &__vendor{
+
+            &-title{
+                color: map-get($map: $colors, $key: secondary);
+                font-size: 1.4rem;
+                font-weight: 600;
+            }
+        }
+
+        &__links{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            &-item{
+                color: map-get($map: $colors, $key: secondary);
+                font-size: 1.2rem;
+                font-weight: 500;
+                text-decoration: none;
+
+            }
+        }
+    }
+
+    &__trabajos{
+        // border-left: 2px map-get($map: $colors, $key: secondary) solid;
+        display: flex;
+        flex-direction: column;
+        margin: 2em 1.5em;
+        padding-left: 3em;
+
+        &__vendor{
+            
+            &-title{
+                color: map-get($map: $colors, $key: secondary);
+                font-size: 1.8rem;
+                font-weight: 800;
+            }
+        }
+
+        &__container{
+
+            &__item{
+                border-bottom: 2px solid map-get($map: $colors, $key: secondary);
+                display: flex;
+                
+                &__img{
+                    border-right: 2px solid map-get($map: $colors, $key: secondary);
+                    padding: 1.5em;
+                }
+
+                &__info{
+
+                    &__vendor{
+                        padding: 1em 0;
+                        padding-left: 1em;
+
+                        &-title, &-subtitle, &-description{
+                            color: map-get($map: $colors, $key: secondary);
+                            margin: 5px 0;
+                        }
+
+                        &-title{
+                            font-size: 1.5rem;
+                        }
+
+                        &-subtile{
+                            font-size: 1.2rem;
+                        }
+
+                        &-description{
+                            font-size: 1rem;
+                        }
+                    }
+
+                    &__technologies{
+                        border-top: 2px map-get($map: $colors, $key: secondary) solid;
+                        border-bottom: 2px map-get($map: $colors, $key: secondary) solid;
+                        padding: 1em;
+
+                        &-item{
+                            border: 2px map-get($map: $colors, $key: secondary) solid;
+                            color: map-get($map: $colors, $key: secondary);
+                            font-size: 1rem;
+                            font-weight: 500;
+                            margin: 0 .5em;
+                            padding: 0 .25em;
+                            text-decoration: none;
+                        }
+                    }
+
+                    &__links{
+                        padding: 2em 0;
+
+                        &-item{
+                            border: 2px solid map-get($map: $colors, $key: tertiary);
+                            color: map-get($map: $colors, $key: secondary);
+                            font-size: 1.2rem;
+                            font-weight: bold;
+                            margin: 0 1em;
+                            padding: .3em .8em;
+                            text-decoration: none;
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+}

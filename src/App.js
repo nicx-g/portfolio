@@ -13,12 +13,12 @@ function App() {
     let location = useLocation();
     
     return (
-      <FramerMotionProvider>
-                <NavBar/>
+    <FramerMotionProvider>
+        <NavBar/>
             <AnimatePresence exitBeforeEnter>
                 <Switch location={location} key={location.pathname}>
                     <Route path='/sobre-mi' component={SobreMi}/>
-                    <Route path='/proyectos' component={Proyectos}/>
+                    <Route path='/proyectos/:categoria?' component={Proyectos}/>
                     <Route path='/contacto' component={Contacto}/>
                     <Route exact path='/' component={Inicio}/>
                 </Switch>
