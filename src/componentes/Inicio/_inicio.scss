@@ -9,10 +9,16 @@
         border-left: 10px solid map-get($map: $colors, $key: tertiary);
         padding-left: 1em;
 
-        &-title, &-subtitle, &-link{
+        &-title, &-subtitle, &-link, &-text{
             color: map-get($map: $colors, $key: secondary);
             font-weight: bolder;
             margin: 5px;
+        }
+
+        &-text{
+            color: transparentize(map-get($colors, secondary), .5);
+            font-size: 1.3rem;
+            margin: -15px 5px;
         }
 
         &-title{

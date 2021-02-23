@@ -19,9 +19,12 @@ const Inicio = () => {
             className="home"
             >
             <div className="home__vendor">
+
+                <h3 className="home__vendor-text">¡Hola! me llamo</h3>
                 <h1 className="home__vendor-title">
                     Nicolás Gomez
                 </h1>
+                <h3 className="home__vendor-text">Y soy</h3>
                 <h2 className="home__vendor-subtitle">
                     Desarrollador Frontend
                 </h2>
@@ -29,9 +32,9 @@ const Inicio = () => {
             </div>
             <div className="home__jugaConmigo comoElla">
                 <div className="home__jugaConmigo__vendor">
-                    <h3 className="home__jugaConmigo__vendor-title">
+                    <h4 className="home__jugaConmigo__vendor-title">
                         Jugamos?
-                    </h3>
+                    </h4>
                 </div>
                 <div className="home__jugaConmigo__tateti">
                     <Tateti/>

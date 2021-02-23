@@ -5,20 +5,19 @@ import {FramerMotionContext} from '../../context/framerMotionContext/framerMotio
 const Contacto = () => {
 
     const framerMotionContext = useContext(FramerMotionContext);
-    const {pageTransition, pageVariants} = framerMotionContext
+    const {pageVariants} = framerMotionContext
 
-    return(
-        <motion.div
-            initial='initial'
-            animate='in'
-            exit='out'
-            variants={pageVariants}
-            transition={pageTransition}
-            style={{textAlign: 'center'}}
-        >
-            <h1>Contacto</h1>
-            <p>mensaje más elaborado</p>
-        </motion.div>
+    return (
+    <motion.div 
+    className="contacto"
+    variants={pageVariants}
+    initial='initial'
+    animate='in'
+    exit='out'
+    >
+        <h1>contacto</h1>
+        <p>mensaje más elaborado</p>
+    </motion.div>
     )
 }
 

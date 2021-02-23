@@ -2,38 +2,43 @@
     display: flex;
 
     &__filtro{
+        border-right: 2px solid map-get($map: $colors, $key: secondary);
         margin: 2em 1em 2em 3em;
 
-        &__vendor{
+        &__container{
+            left: 0;
+            position: sticky;
+            top:100px;
 
-            &-title{
-                color: map-get($map: $colors, $key: secondary);
-                font-size: 1.4rem;
-                font-weight: 600;
+            &__vendor{
+    
+                &-title{
+                    color: map-get($map: $colors, $key: secondary);
+                    font-size: 1.4rem;
+                    font-weight: 600;
+                }
             }
-        }
 
-        &__links{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-
-            &-item{
-                color: map-get($map: $colors, $key: secondary);
-                font-size: 1.2rem;
-                font-weight: 500;
-                text-decoration: none;
-
+            &__links{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+    
+                &-item{
+                    color: map-get($map: $colors, $key: secondary);
+                    font-size: 1.2rem;
+                    font-weight: 500;
+                    text-decoration: none;
+    
+                }
             }
         }
     }
 
     &__trabajos{
-        // border-left: 2px map-get($map: $colors, $key: secondary) solid;
         display: flex;
         flex-direction: column;
         margin: 2em 1.5em;
-        padding-left: 3em;
 
         &__vendor{
             
@@ -47,6 +52,7 @@
         &__container{
 
             &__item{
+                align-items: center;
                 border-bottom: 2px solid map-get($map: $colors, $key: secondary);
                 display: flex;
                 
@@ -82,16 +88,27 @@
                     &__technologies{
                         border-top: 2px map-get($map: $colors, $key: secondary) solid;
                         border-bottom: 2px map-get($map: $colors, $key: secondary) solid;
+                        display: flex;
+                        flex-flow: wrap;
                         padding: 1em;
 
                         &-item{
-                            border: 2px map-get($map: $colors, $key: secondary) solid;
+                            border: 4px map-get($map: $colors, $key: tertiary) solid;
                             color: map-get($map: $colors, $key: secondary);
                             font-size: 1rem;
                             font-weight: 500;
-                            margin: 0 .5em;
-                            padding: 0 .25em;
+                            margin: .3em .5em;
+                            padding: 0 1em;
                             text-decoration: none;
+
+                            background-image: linear-gradient(45deg, map-get($colors, tertiary) 0 calc(50% - 10px), map-get($colors, secondary) calc(50% - 10px) calc(50% + 10px), map-get($colors, primary) calc(50% + 10px) 100%);
+                            background-size: 275% 100%;
+                            background-position: 100% 50%;
+                            transition: all .5s;
+                            &:hover{
+                                background-position: 1% 50%; 
+                                transition: .5s all;
+                            }
                         }
                     }
 
@@ -99,13 +116,22 @@
                         padding: 2em 0;
 
                         &-item{
-                            border: 2px solid map-get($map: $colors, $key: tertiary);
+                            border: 4px solid map-get($map: $colors, $key: tertiary);
                             color: map-get($map: $colors, $key: secondary);
                             font-size: 1.2rem;
                             font-weight: bold;
                             margin: 0 1em;
                             padding: .3em .8em;
                             text-decoration: none;
+
+                            background-image: linear-gradient(45deg, map-get($colors, tertiary) 0 calc(50% - 10px), map-get($colors, secondary) calc(50% - 10px) calc(50% + 10px), map-get($colors, primary) calc(50% + 10px) 100%);
+                            background-size: 275% 100%;
+                            background-position: 100% 50%;
+                            transition: all .5s;
+                            &:hover{
+                                background-position: 1% 50%; 
+                                transition: .5s all;
+                            }
                         }
                     }
                 }
