@@ -1,5 +1,4 @@
 const Cuadrado = ({value}) => {
-    console.log(value)
     return(
         <div className="cuadrado">
             

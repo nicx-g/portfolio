@@ -53,9 +53,10 @@ const pageVariants = {
 
 const FramerMotionProvider = ({children}) => {
     const db = getFirestore();
-    const [proyectos, setProyectos] = useState([])
+    const [projectsDb, setProjectsDb] = useState([])
+    const [recentlyProjects, setRecentlyProjects] = useState([])
 
-    const getProjects = (categoria) => {
+    const getProjects = () => {
         db.collection('proyectos').get()
         .then(proyectoItem => {
             let arr = [];
@@ -63,7 +64,25 @@ const FramerMotionProvider = ({children}) => {
                 arr.push({data: proyecto.data(),
                         id: proyecto.id})
             })
-            setProyectos(arr)
+            setProjectsDb(arr)
+        })
+        .catch(error => {
+            alert('Algo salió mal, revisá tu conexión o volvé a intentarlo más tarde')
+            console.log(error);
+        })
+    }
+
+    const getRecentlyProjects = () => {
+        db.collection('proyectos').orderBy("fecha", "desc").get()
+        .then(item => {
+            let arr = [];
+            item.forEach(item => {
+                arr.push({
+                    data: item.data(),
+                    id: item.id
+                })
+            })
+            setRecentlyProjects(arr)
         })
         .catch(error => {
             alert('Algo salió mal, revisá tu conexión o volvé a intentarlo más tarde')
@@ -73,13 +92,15 @@ const FramerMotionProvider = ({children}) => {
 
     useEffect(() => {
         getProjects()
+        getRecentlyProjects()
     }, [])
-
+    
     return(
         <FramerMotionContext.Provider
         value={{
             pageVariants,
-            proyectos
+            projectsDb,
+            recentlyProjects
         }}>
             {children}
         </FramerMotionContext.Provider>

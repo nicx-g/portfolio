@@ -1,4 +1,5 @@
-import {useContext} from 'react';
+import {useContext, useEffect, useState} from 'react';
+import {useParams} from 'react-router-dom';
 import {motion} from 'framer-motion';
 import ProyectosItem from './ProyectosItem';
 import {FramerMotionContext} from '../../../context/framerMotionContext/framerMotionContext';
@@ -29,9 +30,11 @@ const container = {
 }
 
 const ProyectosContainer = () => {
-
+    
     const framerMotionContext = useContext(FramerMotionContext);
-    const {pageVariants, proyectos} = framerMotionContext
+    const {pageVariants, projectsDb, recentlyProjects} = framerMotionContext
+    const {filtro_proyecto} = useParams()
+    const projects = filtro_proyecto !== 'todos' ? projectsDb.filter(item => item.data.favoritos === true) : projectsDb
 
     return (
         <div className="proyectos__trabajos">
@@ -42,7 +45,7 @@ const ProyectosContainer = () => {
             exit='out'
             variants={pageVariants}
             >
-                <h1 className="proyectos__trabajos__vendor-title">Mis proyectos favoritos</h1>
+                <h1 className="proyectos__trabajos__vendor-title">{filtro_proyecto !== 'recientes' ? filtro_proyecto === 'favoritos' ? '¡Mis proyectos favoritos!' : '¡Todos mis proyectos!' : 'Mis proyectos más recientes'}</h1>
             </motion.div>
         <motion.div 
         className="proyectos__trabajos__container"
@@ -51,9 +54,14 @@ const ProyectosContainer = () => {
         animate='visible'
         exit='hidden'
         >
-            {proyectos.map(item => (
+            {filtro_proyecto === 'recientes' ?
+            recentlyProjects.map(item => (
                 <ProyectosItem item={item} key={item.id} />
-            ))}
+            )):
+            projects.map(item => (
+                <ProyectosItem item={item} key={item.id} />
+            ))
+            }
         </motion.div>
         </div>
     )

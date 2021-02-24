@@ -33,7 +33,7 @@ const Inicio = () => {
             <div className="home__jugaConmigo comoElla">
                 <div className="home__jugaConmigo__vendor">
                     <h4 className="home__jugaConmigo__vendor-title">
-                        Jugamos?
+                        ¿Jugamos?
                     </h4>
                 </div>
                 <div className="home__jugaConmigo__tateti">
