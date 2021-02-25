@@ -22,7 +22,7 @@ const ProyectosItem = ({item}) => {
         className="proyectos__trabajos__container__item"
         >
             <div className="proyectos__trabajos__container__item__img">
-                <img src="https://via.placeholder.com/600x300" alt="descripcion re piola"/>
+                <img src="https://via.placeholder.com/500x250" alt="descripcion re piola"/>
             </div>
             <div className="proyectos__trabajos__container__item__info">
                 <div className="proyectos__trabajos__container__item__info__vendor">
@@ -47,12 +47,18 @@ const ProyectosItem = ({item}) => {
                     className="proyectos__trabajos__container__item__info__links-item" 
                     target='_blank' 
                     href={`${item.data.demo}`}
-                    ><i>Visitar</i></a>
+                    >
+                        <i className='fas fa-external-link-alt'></i>
+                        Visitar
+                    </a>
                     <a 
                     className="proyectos__trabajos__container__item__info__links-item" 
                     target='_blank' 
                     href={`${item.data.repositorio}`}
-                    ><i>Ver repositorio</i></a>
+                    >
+                        <i className='fab fa-github'></i>
+                        Ver repositorio
+                    </a>
                 </div>
             </div>
         </motion.div>

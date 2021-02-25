@@ -8,7 +8,6 @@ const NavBar = () => {
     const framerMotionContext = useContext(FramerMotionContext);
     const {pageVariants, pageTransition} = framerMotionContext;
     let location = useLocation();
-    console.log(location)
     
     return(
         <div className='navBar'>

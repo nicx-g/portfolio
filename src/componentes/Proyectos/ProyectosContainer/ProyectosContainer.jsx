@@ -32,9 +32,9 @@ const container = {
 const ProyectosContainer = () => {
     
     const framerMotionContext = useContext(FramerMotionContext);
-    const {pageVariants, projectsDb, recentlyProjects} = framerMotionContext
+    const {pageVariants, dbProjects, allProjects, recentlyProjects, qtyProjects, setQtyProjects} = framerMotionContext
     const {filtro_proyecto} = useParams()
-    const projects = filtro_proyecto !== 'todos' ? projectsDb.filter(item => item.data.favoritos === true) : projectsDb
+    const favProjects = filtro_proyecto === 'favoritos' ? dbProjects.filter(item => item.data.favoritos === true) : dbProjects
 
     return (
         <div className="proyectos__trabajos">
@@ -54,15 +54,53 @@ const ProyectosContainer = () => {
         animate='visible'
         exit='hidden'
         >
-            {filtro_proyecto === 'recientes' ?
-            recentlyProjects.map(item => (
+            {filtro_proyecto !== 'recientes' ?
+            filtro_proyecto === 'favoritos' ?
+            favProjects.map(item => (
                 <ProyectosItem item={item} key={item.id} />
             )):
-            projects.map(item => (
+            allProjects.map(item => (
+                <ProyectosItem item={item} key={item.id} />
+            )):
+            recentlyProjects.map(item => (
                 <ProyectosItem item={item} key={item.id} />
             ))
             }
         </motion.div>
+        {filtro_proyecto === 'recientes' || filtro_proyecto === 'todos' ?
+            <motion.div 
+            className="proyectos__trabajos__more"
+            variants={pageVariants}
+            initial='projectBtnInit'
+            animate='in'
+            exit='projectBtnInit'
+            >
+                <button 
+                className='proyectos__trabajos__more-btn'
+                onClick={() => {
+                    filtro_proyecto !== 'recientes' ? 
+                    filtro_proyecto === 'todos' && qtyProjects.allProjects < dbProjects.length ? 
+                    setQtyProjects({...qtyProjects, 
+                        allProjects: qtyProjects.allProjects + 3
+                    }) : 
+                    setQtyProjects({...qtyProjects}) :
+                    qtyProjects.recentlyProjects < dbProjects.length ?
+                    setQtyProjects({...qtyProjects, 
+                        recentlyProjects: qtyProjects.recentlyProjects + 3
+                    }) :
+                    setQtyProjects({...qtyProjects})
+                }} 
+                >{filtro_proyecto === 'recientes' ?
+                qtyProjects.recentlyProjects >= dbProjects.length ?
+                'Por ahora no tengo nada más que mostrarte :(' :
+                '¡Mostrar más proyectos!' :
+                qtyProjects.allProjects >= dbProjects.length ?
+                'Por ahora no tengo nada más que mostrarte :(' :
+                '¡Mostrar más proyectos!'
+                }</button>
+            </motion.div>:
+            null
+            }
         </div>
     )
 }

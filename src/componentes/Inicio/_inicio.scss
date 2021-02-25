@@ -17,16 +17,16 @@
 
         &-text{
             color: transparentize(map-get($colors, secondary), .5);
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             margin: -15px 5px;
         }
 
         &-title{
-            font-size: 3rem;
+            font-size: 2.8rem;
         }
 
         &-subtitle{
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-style: italic;
             margin-bottom: 1em;
         }
@@ -34,7 +34,7 @@
         &-link{
             background-color: map-get($map: $colors, $key: tertiary);
             border-radius: 5px;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             margin: 2em 0;
             padding: .5em;
             position: relative;
@@ -85,7 +85,7 @@
 
             &-title{
                 color: map-get($map: $colors, $key: secondary);
-                font-size: 2rem;
+                font-size: 1.8rem;
                 font-weight: bolder;
             }
         }

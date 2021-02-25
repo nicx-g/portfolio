@@ -13,19 +13,19 @@ const Proyectos = () => {
     return(
         <div className="proyectos">
             <motion.div 
-            initial='filterInitial'
+            initial='filterInit'
             animate='in'
-            exit='filterInitial'
+            exit='filterInit'
             variants={pageVariants}
             className="proyectos__filtro">
                 <div className="proyectos__filtro__container">
                     <div className="proyectos__filtro__container__vendor">
-                        <h2 className="proyectos__filtro__container__vendor-title">Seleccioná los proyectos que quieras ver</h2>
+                        <h2 className="proyectos__filtro__container__vendor-title">¿Qué proyectos te gustaría ver?</h2>
                     </div>
                     <div className="proyectos__filtro__container__links">
-                        <NavLink className="proyectos__filtro__container__links-item" to='/proyectos/favoritos'>Mis favoritos</NavLink>
-                        <NavLink className="proyectos__filtro__container__links-item" to='/proyectos/todos'>Todos</NavLink>
-                        <NavLink className="proyectos__filtro__container__links-item" to='/proyectos/recientes'>Los más recientes</NavLink>
+                        <NavLink activeClassName='active' className="proyectos__filtro__container__links-item" to='/proyectos/favoritos'>Mis favoritos</NavLink>
+                        <NavLink activeClassName='active' className="proyectos__filtro__container__links-item" to='/proyectos/todos'>Todos</NavLink>
+                        <NavLink activeClassName='active' className="proyectos__filtro__container__links-item" to='/proyectos/recientes'>Los más recientes</NavLink>
                     </div>
                 </div>
             </motion.div>

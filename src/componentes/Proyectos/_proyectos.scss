@@ -14,7 +14,7 @@
     
                 &-title{
                     color: map-get($map: $colors, $key: secondary);
-                    font-size: 1.4rem;
+                    font-size: 1.2rem;
                     font-weight: 600;
                 }
             }
@@ -26,11 +26,63 @@
     
                 &-item{
                     color: map-get($map: $colors, $key: secondary);
-                    font-size: 1.2rem;
+                    font-size: 1.1rem;
                     font-weight: 500;
+                    position: relative;
                     text-decoration: none;
+                    transition: transform .3s ease-in-out;
     
+                    &:hover{
+                        transform: translateX(5px);
+
+                        &:before{
+                            opacity: 1;
+                            transform: translateX(-23px) rotate(360deg);
+                        }
+                    }
+                    
+                    &:before{
+                        color: map-get($map: $colors, $key: secondary);
+                        font-family: 'Font Awesome 5 Free';
+                        font-weight: 900;
+                        left: 0;
+                        opacity: 0;
+                        position: absolute;
+                        top: 2px;
+                        transform: translateX(0px) rotate(180deg);
+                        transition: all .3s ease-in-out;
+                    }
+
+                    &.active{
+                        transform: translateX(5px);
+                        
+                        &:before{
+                        opacity: 1;
+                        transform: translateX(-23px) rotate(360deg);
+                        }
+                    }
                 }
+
+                &-item:nth-child(1){
+
+                    &:before{
+                        content: '\f005';
+                    }
+                }
+                
+                &-item:nth-child(2){
+
+                    &:before{
+                        content: "\f07c";
+                    }
+                }
+                &-item:nth-child(3){
+
+                    &:before{
+                        content: "\f017";
+                    }
+                }
+
             }
         }
     }
@@ -44,7 +96,7 @@
             
             &-title{
                 color: map-get($map: $colors, $key: secondary);
-                font-size: 1.8rem;
+                font-size: 1.5rem;
                 font-weight: 800;
             }
         }
@@ -73,11 +125,11 @@
                         }
 
                         &-title{
-                            font-size: 1.5rem;
+                            font-size: 1.3rem;
                         }
 
                         &-subtile{
-                            font-size: 1.2rem;
+                            font-size: 1.1rem;
                         }
 
                         &-description{
@@ -114,11 +166,12 @@
 
                     &__links{
                         padding: 2em 0;
+                        width: 100%;
 
                         &-item{
                             border: 4px solid map-get($map: $colors, $key: tertiary);
                             color: map-get($map: $colors, $key: secondary);
-                            font-size: 1.2rem;
+                            font-size: 1rem;
                             font-weight: bold;
                             margin: 0 1em;
                             padding: .3em .8em;
@@ -128,14 +181,47 @@
                             background-size: 275% 100%;
                             background-position: 100% 50%;
                             transition: all .5s;
+
                             &:hover{
                                 background-position: 1% 50%; 
                                 transition: .5s all;
+                            }
+
+                            i{
+                                margin-right: 10px;
                             }
                         }
                     }
                 }
 
+            }
+        }
+
+        &__more{
+            margin: auto;
+
+            &-btn{
+                background-color: transparent;
+                border: 4px map-get($map: $colors, $key: tertiary) solid;
+                color: map-get($map: $colors, $key: secondary);
+                cursor: pointer;
+                font-size: 1.2rem;
+                font-weight: 500;
+                margin: 1em;
+                outline: none;
+                padding: .5em 1em;
+                text-decoration: none;
+                width: auto;
+
+                background-image: linear-gradient(45deg, map-get($colors, tertiary) 0 calc(50% - 10px), map-get($colors, secondary) calc(50% - 10px) calc(50% + 10px), map-get($colors, primary) calc(50% + 10px) 100%);
+                background-size: 275% 100%;
+                background-position: 100% 50%;
+                transition: all .5s;
+                &:hover{
+                    background-color: map-get($map: $colors, $key: tertiary);
+                    background-position: 1% 50%; 
+                    transition: .5s all;
+                }
             }
         }
     }
