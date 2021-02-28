@@ -2,6 +2,7 @@
     align-items: center;
     display: flex;
     justify-content: space-around;
+    z-index: 99999999999;
 
     &__headerLeft{
         margin: 2em;

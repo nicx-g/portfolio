@@ -10,6 +10,6 @@ const app = firebase.initializeApp({
     appId: process.env.APP_ID
   });
 
-export const getFirebase = () => {return app}
+export const getFirebase = () => app
 
-export const getFirestore = () => {return firebase.firestore(app)}
+export const getFirestore = () => firebase.firestore(app)

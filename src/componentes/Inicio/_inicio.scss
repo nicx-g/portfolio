@@ -4,6 +4,7 @@
     justify-content: space-evenly;
     height: 100%;
     padding: 2em;
+    overflow: hidden;
 
     &__vendor{
         border-left: 10px solid map-get($map: $colors, $key: tertiary);

@@ -151,6 +151,7 @@
                             font-weight: 500;
                             margin: .3em .5em;
                             padding: 0 1em;
+                            position: relative;
                             text-decoration: none;
 
                             background-image: linear-gradient(45deg, map-get($colors, tertiary) 0 calc(50% - 10px), map-get($colors, secondary) calc(50% - 10px) calc(50% + 10px), map-get($colors, primary) calc(50% + 10px) 100%);
@@ -210,6 +211,7 @@
                 margin: 1em;
                 outline: none;
                 padding: .5em 1em;
+                position: relative;
                 text-decoration: none;
                 width: auto;
 
@@ -222,7 +224,41 @@
                     background-position: 1% 50%; 
                     transition: .5s all;
                 }
+
+                &.loader{
+
+                    &::before{
+                        background-color: map-get($map: $colors, $key: primary);
+                        content: '';
+                        left: 0;
+                        height: 100%;
+                        position: absolute;
+                        top: 0;
+                        width: 100%;
+                    }
+
+                    &::after{
+                        animation: rotateLoader 1s infinite linear;
+                        border: 2px solid map-get($colors, tertiary);
+                        border-left: 2px solid map-get($map: $colors, $key: secondary);
+                        border-radius: 50%;
+                        content: '';
+                        height: 30px;
+                        position: absolute;
+                        right: calc(50% - 1em);
+                        top: calc(50% - .9em);
+                        width: 30px;
+                    }
+                }
+                &:disabled{
+                    cursor: default;
+                }
             }
         }
     }
+}
+
+@keyframes rotateLoader {
+    0%{transform: rotate(0deg)}
+    100%{transform: rotate(360deg)}
 }

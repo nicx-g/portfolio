@@ -1,5 +1,4 @@
-import {createContext, useEffect, useState} from 'react';
-import {getFirestore} from '../../db/index';
+import {createContext} from 'react';
 
 export const FramerMotionContext = createContext();
 
@@ -60,90 +59,111 @@ const pageVariants = {
     }
 }
 
+const containerProyectos = {
+    visible:{
+        x: 0,
+        opacity: 1,
+        transition:{
+            when: 'beforeChildren',
+            staggerChildren: .3,
+            type: "tween",
+            ease: 'anticipate'
+        }
+    },
+    hidden:{
+        x:'100vw',
+        opacity: 0,
+        transition:{
+            when:'afterChildren',
+            staggerChildren: .2,
+            staggerDirection: 1,
+            type: "tween",
+            ease: 'anticipate'
+        }
+    }
+}
+
+const itemProyectos = {
+    hidden: {
+        x: "100vw", 
+        opacity: 0 
+    },
+    visible: {
+        x: 0,
+        opacity: 1 ,
+        transition:{
+            duration: 1,
+        }
+    }
+}
+
+const containerInicio= {
+    visible:{
+        x: 0,
+        opacity: 1,
+        transition:{
+            staggerChildren: .3,
+            type: "tween",
+            ease: 'anticipate'
+        }
+    },
+    hidden:{
+        x:'100vw',
+        opacity: 0,
+        transition:{
+            when:'afterChildren',
+            staggerChildren: .08,
+            staggerDirection: -1,
+            type: "tween",
+            ease: 'anticipate'
+        }
+    }
+}
+
+const itemInicio = {
+    hidden: {
+        x: "-100vw", 
+        opacity: 0 
+    },
+    hiddenLink:{
+        y: "100vh", 
+        opacity: 0 
+    },
+    hiddenTateti:{
+        x:'100vw',
+        opacity: 0
+    },
+    visible: {
+        x: 0,
+        y: 0,
+        opacity: 1 ,
+        transition:{
+            duration: 1.1,
+        }
+    },
+    visibleTateti:{
+        x:0,
+        y:0,
+        opacity: 1,
+        transition:{
+            delay: 2,
+            duration: 1.5,
+            type: "tween",
+            ease: 'anticipate'
+        }
+    }
+}
+
 const FramerMotionProvider = ({children}) => {
-    const db = getFirestore();
-    const [dbProjects, setDbProjects] = useState([])
-    const [allProjects, setAllProjecs] = useState([])
-    const [recentlyProjects, setRecentlyProjects] = useState([])
-    const [qtyProjects, setQtyProjects] = useState({
-        recentlyProjects: 3,
-        allProjects: 3
-    })
-
-    const getDbProjects = () => {
-        db.collection('proyectos').get()
-        .then(proyectoItem => {
-            let arr = [];
-            proyectoItem.forEach(proyecto => {
-                arr.push({data: proyecto.data(),
-                        id: proyecto.id})
-            })
-            setDbProjects(arr)
-        })
-        .catch(error => {
-            alert('Algo salió mal, revisá tu conexión o volvé a intentarlo más tarde')
-            console.log(error);
-        })
-    }
-
-    const getRecentlyProjects = () => {
-        db.collection('proyectos').orderBy("fecha", "desc").limit(qtyProjects.recentlyProjects).get()
-        .then(item => {
-            let arr = [];
-            item.forEach(item => {
-                arr.push({
-                    data: item.data(),
-                    id: item.id
-                })
-            })
-            setRecentlyProjects(arr)
-        })
-        .catch(error => {
-            alert('Algo salió mal, revisá tu conexión o volvé a intentarlo más tarde')
-            console.log(error);
-        })
-    }
-
-    const getAllProjects = () => {
-        db.collection('proyectos').limit(qtyProjects.allProjects).get()
-        .then(item => {
-            let arr = [];
-            item.forEach(item => {
-                arr.push({
-                    data: item.data(),
-                    id: item.id
-                })
-            })
-            setAllProjecs(arr)
-        })
-        .catch(error => {
-            alert('Algo salió mal, revisá tu conexión o volvé a intentarlo más tarde')
-            console.log(error);
-        })
-    }
-
-    useEffect(() => {
-        getDbProjects()
-    }, [])
-
-    useEffect(() => {
-        getRecentlyProjects()
-    }, [qtyProjects.recentlyProjects])
-
-    useEffect(() => {
-        getAllProjects()
-    }, [qtyProjects.allProjects])
 
     return(
         <FramerMotionContext.Provider
         value={{
             pageVariants,
-            dbProjects,
-            allProjects,
-            recentlyProjects,
-            qtyProjects,
-            setQtyProjects
-
+            containerInicio,
+            itemInicio,
+            containerProyectos,
+            itemProyectos
         }}>
             {children}
         </FramerMotionContext.Provider>

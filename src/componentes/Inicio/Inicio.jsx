@@ -7,30 +7,26 @@ import Tateti from './Tateti/Tateti';
 const Inicio = () => {
 
     const framerMotionContext = useContext(FramerMotionContext);
-    const {pageTransition, pageVariants} = framerMotionContext;
-    
-    return (
-        <motion.div 
-            initial='initial'
-            animate='in'
-            exit='out'
-            variants={pageVariants}
-            transition={pageTransition}
-            className="home"
-            >
-            <div className="home__vendor">
+    const {itemInicio, containerInicio} = framerMotionContext;
 
-                <h3 className="home__vendor-text">¡Hola! me llamo</h3>
-                <h1 className="home__vendor-title">
-                    Nicolás Gomez
-                </h1>
-                <h3 className="home__vendor-text">Y soy</h3>
-                <h2 className="home__vendor-subtitle">
-                    Desarrollador Frontend
-                </h2>
-                <Link className="home__vendor-link" to='/sobre-mi'>Acerca de mi</Link>
-            </div>
-            <div className="home__jugaConmigo comoElla">
+    return (
+        <div className="home">
+            <motion.div 
+            className="home__vendor"
+            variants={containerInicio}
+            initial='hidden'
+            animate='visible'
+            exit='hidden'
+            >
+                <motion.h3 variants={itemInicio} className="home__vendor-text">¡Hola! me llamo</motion.h3>
+                <motion.h1 variants={itemInicio} className="home__vendor-title">Nicolás Gomez</motion.h1>
+                <motion.h3 variants={itemInicio} className="home__vendor-text">Y soy</motion.h3>
+                <motion.h2 variants={itemInicio} className="home__vendor-subtitle">Desarrollador Frontend</motion.h2>
+                <motion.div variants={itemInicio} initial='hiddenLink'>
+                    <Link className="home__vendor-link" to='/sobre-mi'>Acerca de mi</Link>
+                </motion.div>
+            </motion.div>
+            <motion.div variants={itemInicio} initial='hiddenTateti' animate='visibleTateti' exit='hiddenTateti' className="home__jugaConmigo comoElla">
                 <div className="home__jugaConmigo__vendor">
                     <h4 className="home__jugaConmigo__vendor-title">
                         ¿Jugamos?
@@ -39,8 +35,8 @@ const Inicio = () => {
                 <div className="home__jugaConmigo__tateti">
                     <Tateti/>
                 </div>
-            </div>
-        </motion.div>
+            </motion.div>
+        </div>
     )
 }
 

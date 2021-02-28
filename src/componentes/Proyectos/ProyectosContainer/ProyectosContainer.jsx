@@ -1,38 +1,18 @@
-import {useContext, useEffect, useState} from 'react';
+import {useContext} from 'react';
 import {useParams} from 'react-router-dom';
 import {motion} from 'framer-motion';
 import ProyectosItem from './ProyectosItem';
 import {FramerMotionContext} from '../../../context/framerMotionContext/framerMotionContext';
-
-
-const container = {
-    visible:{
-        x: 0,
-        opacity: 1,
-        transition:{
-            when: 'beforeChildren',
-            staggerChildren: .3,
-            type: "tween",
-            ease: 'anticipate'
-        }
-    },
-    hidden:{
-        x:'100vw',
-        opacity: 0,
-        transition:{
-            when:'afterChildren',
-            staggerChildren: .2,
-            staggerDirection: 1,
-            type: "tween",
-            ease: 'anticipate'
-        }
-    }
-}
+import {DbContext} from '../../../context/dbContext/dbContext';
 
 const ProyectosContainer = () => {
     
     const framerMotionContext = useContext(FramerMotionContext);
-    const {pageVariants, dbProjects, allProjects, recentlyProjects, qtyProjects, setQtyProjects} = framerMotionContext
+    const {pageVariants, containerProyectos} = framerMotionContext
+
+    const dbContext = useContext(DbContext);
+    const {dbProjects, allProjects, recentlyProjects, qtyProjects, setQtyProjects, loadingDb} = dbContext
+    
     const {filtro_proyecto} = useParams()
     const favProjects = filtro_proyecto === 'favoritos' ? dbProjects.filter(item => item.data.favoritos === true) : dbProjects
 
@@ -49,7 +29,7 @@ const ProyectosContainer = () => {
             </motion.div>
         <motion.div 
         className="proyectos__trabajos__container"
-        variants={container}
+        variants={containerProyectos}
         initial='hidden'
         animate='visible'
         exit='hidden'
@@ -76,7 +56,7 @@ const ProyectosContainer = () => {
             exit='projectBtnInit'
             >
                 <button 
-                className='proyectos__trabajos__more-btn'
+                className={`proyectos__trabajos__more-btn ${loadingDb ? 'loader' : ''}`}
                 onClick={() => {
                     filtro_proyecto !== 'recientes' ? 
                     filtro_proyecto === 'todos' && qtyProjects.allProjects < dbProjects.length ? 
@@ -90,13 +70,23 @@ const ProyectosContainer = () => {
                     }) :
                     setQtyProjects({...qtyProjects})
                 }} 
-                >{filtro_proyecto === 'recientes' ?
-                qtyProjects.recentlyProjects >= dbProjects.length ?
-                'Por ahora no tengo nada más que mostrarte :(' :
-                '¡Mostrar más proyectos!' :
-                qtyProjects.allProjects >= dbProjects.length ?
-                'Por ahora no tengo nada más que mostrarte :(' :
-                '¡Mostrar más proyectos!'
+                disabled={
+                    filtro_proyecto === 'recientes' ?
+                    qtyProjects.recentlyProjects >= dbProjects.length ?
+                    'disabled' :
+                    '' :
+                    qtyProjects.allProjects >= dbProjects.length ?
+                    'disabled' :
+                    ''
+                }
+                >{
+                    filtro_proyecto === 'recientes' ?
+                    qtyProjects.recentlyProjects >= dbProjects.length ?
+                    'Por ahora no tengo nada más que mostrarte :(' :
+                    '¡Mostrar más proyectos!' :
+                    qtyProjects.allProjects >= dbProjects.length ?
+                    'Por ahora no tengo nada más que mostrarte :(' :
+                    '¡Mostrar más proyectos!'
                 }</button>
             </motion.div>:
             null

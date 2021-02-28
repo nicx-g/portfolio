@@ -6,7 +6,9 @@ import Proyectos from './componentes/Proyectos/Proyectos';
 import Contacto from './componentes/Contacto/Contacto';
 import NavBar from './componentes/Global/NavBar/NavBar';
 import SobreMi from './componentes/SobreMi/SobreMi';
+import ParticlesContainer from './componentes/Global/Particles/Particles';
 import FramerMotionProvider from './context/framerMotionContext/framerMotionContext';
+import DbProvider from './context/dbContext/dbContext';
 
 function App() {
     
@@ -14,7 +16,9 @@ function App() {
     
     return (
     <FramerMotionProvider>
-        <NavBar/>
+        <DbProvider>
+            <ParticlesContainer/>
+            <NavBar/>
             <AnimatePresence exitBeforeEnter>
                 <Switch location={location} key={location.pathname}>
                     <Route path='/sobre-mi' component={SobreMi}/>
@@ -23,6 +27,7 @@ function App() {
                     <Route exact path='/' component={Inicio}/>
                 </Switch>
             </AnimatePresence>
+        </DbProvider>
     </FramerMotionProvider>
     
     );

@@ -1,24 +1,15 @@
+import {useContext} from 'react';
 import {motion} from 'framer-motion';
+import {FramerMotionContext} from '../../../context/framerMotionContext/framerMotionContext';
 
 const ProyectosItem = ({item}) => {
     
-    const item2 = {
-        hidden: {
-            x: "100vw", 
-            opacity: 0 
-        },
-        visible: {
-            x: 0,
-            opacity: 1 ,
-            transition:{
-                duration: 1,
-            }
-        }
-    }
+    const framerMotionContext = useContext(FramerMotionContext);
+    const {itemProyectos} = framerMotionContext;
     
     return(
         <motion.div 
-        variants={item2}
+        variants={itemProyectos}
         className="proyectos__trabajos__container__item"
         >
             <div className="proyectos__trabajos__container__item__img">
