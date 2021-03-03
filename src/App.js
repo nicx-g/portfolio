@@ -17,7 +17,7 @@ function App() {
     return (
     <FramerMotionProvider>
         <DbProvider>
-            <ParticlesContainer/>
+            {/* <ParticlesContainer/> */}
             <NavBar/>
             <AnimatePresence exitBeforeEnter>
                 <Switch location={location} key={location.pathname}>

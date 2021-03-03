@@ -88,11 +88,11 @@ const DbProvider = ({children}) =>{
     return(
         <DbContext.Provider value={{
             dbProjects,
-            allProjects,
             recentlyProjects,
+            allProjects,
             qtyProjects,
-            loadingDb,
-            setQtyProjects
+            setQtyProjects,
+            loadingDb
         }}>
             {children}
         </DbContext.Provider>

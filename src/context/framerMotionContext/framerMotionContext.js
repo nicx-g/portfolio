@@ -83,20 +83,6 @@ const containerProyectos = {
     }
 }
 
-const itemProyectos = {
-    hidden: {
-        x: "100vw", 
-        opacity: 0 
-    },
-    visible: {
-        x: 0,
-        opacity: 1 ,
-        transition:{
-            duration: 1,
-        }
-    }
-}
-
 const containerInicio= {
     visible:{
         x: 0,
@@ -116,6 +102,20 @@ const containerInicio= {
             staggerDirection: -1,
             type: "tween",
             ease: 'anticipate'
+        }
+    }
+}
+
+const itemProyectos = {
+    hidden: {
+        x: "100vw", 
+        opacity: 0 
+    },
+    visible: {
+        x: 0,
+        opacity: 1 ,
+        transition:{
+            duration: 1,
         }
     }
 }
@@ -160,10 +160,10 @@ const FramerMotionProvider = ({children}) => {
         <FramerMotionContext.Provider
         value={{
             pageVariants,
-            containerInicio,
-            itemInicio,
             containerProyectos,
-            itemProyectos
+            containerInicio,
+            itemProyectos,
+            itemInicio
         }}>
             {children}
         </FramerMotionContext.Provider>
