@@ -11,7 +11,7 @@ const Inicio = () => {
 
     return (
         <div className="home">
-            <div 
+            <motion.div 
             className="home__vendor"
             variants={containerInicio}
             initial='hidden'
@@ -25,8 +25,8 @@ const Inicio = () => {
                 <motion.div variants={itemInicio} initial='hiddenLink'>
                     <Link className="home__vendor-link" to='/sobre-mi'>Acerca de mi</Link>
                 </motion.div>
-            </div>
-            <div variants={itemInicio} initial='hiddenTateti' animate='visibleTateti' exit='hiddenTateti' className="home__jugaConmigo comoElla">
+            </motion.div>
+            <motion.div variants={itemInicio} initial='hiddenTateti' animate='visibleTateti' exit='hiddenTateti' className="home__jugaConmigo comoElla">
                 <div className="home__jugaConmigo__vendor">
                     <h4 className="home__jugaConmigo__vendor-title">
                         ¿Jugamos?
@@ -35,7 +35,7 @@ const Inicio = () => {
                 <div className="home__jugaConmigo__tateti">
                     <Tateti/>
                 </div>
-            </div>
+            </motion.div>
         </div>
     )
 }

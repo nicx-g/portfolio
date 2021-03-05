@@ -1,11 +1,11 @@
 import Cuadrado from '../Cuadrado/Cuadrado';
 
-const Tablero = ({cuadrados, handleClick, turno, cuadradoGanador}) => {
+const Tablero = ({cuadrados, handleClick, turno, lineaGanadora}) => {
 
     const crearCuadrado = (values) => (
         values.map( (value, index) => (
             <Cuadrado
-            ganador={cuadradoGanador.includes(value)}
+            ganador={lineaGanadora.includes(value)}
             onClick={() => handleClick(value)}
             turno={turno}
             key={index}
